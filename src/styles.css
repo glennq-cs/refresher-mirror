@@ -1,1 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 0px;
+  margin: 0px;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 3em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+.content {
+  min-height: 350px;
+}
+
+.content,
+header,
+footer {
+  padding: 50px 20px;
+}
+
+nav {
+  border-top: 1px solid #666;
+}
+
+a.nav-link {
+  color: #999 !important;
+}
+
+a.nav-link:hover {
+  color: #eee !important;
+}
+
+a.nav-link.active {
+  color: #eee !important;
+  font-weight: 600;
+}
+
+nav,
+header,
+footer {
+  background-color: #333;
+  color: #eee;
+}
