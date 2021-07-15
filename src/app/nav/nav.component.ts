@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
-// import { GlobalService } from '../services/global.service';
-// import { ClearAuth } from '../states/auth.actions';
+import { GlobalService } from '../services/global.service';
+import { ClearAuth } from '../states/auth.actions';
 
 @Component({
   selector: 'app-nav',
@@ -15,22 +15,23 @@ export class NavComponent implements OnInit {
 
   constructor(
     private _store: Store,
-    // private _globalService: GlobalService,
+    private _globalService: GlobalService,
     private _router: Router
   ) { }
 
   ngOnInit(): void {
-    // this.isLogged = this._globalService.getLogStatus();
+    this.isLogged = this._globalService.getLogStatus();
+    console.log(this.isLogged);
   }
 
   onLogout(): void {
-    // this._store.dispatch(new ClearAuth());
-    // this._store.subscribe((response: any) => {
-    //   if (response.auth.logged === false) {
-    //     this._router.navigate(['/login']);
-    //     this.isLogged = false;
-    //   }
-    // });
+    this._store.dispatch(new ClearAuth());
+    this._store.subscribe((response: any) => {
+      if (response.auth.logged === false) {
+        this._router.navigate(['/login']);
+        this.isLogged = false;
+      }
+    });
   }
 
 }

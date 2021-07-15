@@ -21,6 +21,22 @@ $router->group(['prefix' => 'api'], function() use ($router) {
             $router->get('users', [
                 'uses' => 'UserController@showAllUsers'
             ]);
+
+            $router->get('categories', [
+                'uses' => 'CategoryController@showAllCategories'
+            ]);
+            
+            $router->post('categories', [
+                'uses' => 'CategoryController@create'
+            ]);
+
+            $router->put('categories/{id}', [
+                'uses' => 'CategoryController@update'
+            ]);
+
+            $router->delete('categories/{id}', [
+                'uses' => 'CategoryController@delete'
+            ]);
         });
 
     // $router->get('users', [

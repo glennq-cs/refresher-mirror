@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Middleware;
 
 use Closure;
@@ -36,6 +37,5 @@ class JwtMiddleware
         $request->auth = $user;
 
         return $next($request);
-
     }
 }

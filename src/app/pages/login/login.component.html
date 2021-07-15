@@ -1,1 +1,41 @@
-<p>login works!</p>
+<div class="container my-5">
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <div class="p-3 bg-dark text-white">
+                <h5>Login</h5>
+            </div>
+            <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+                <div class="form-group p-3  border">
+                    <input
+                        formControlName="username"
+                        placeholder="Username"
+                        class="form-control"
+                        required
+                    />
+                    <div 
+                        *ngIf="loginForm.get('username').invalid && loginForm.get('username').touched" 
+                        class="alert alert-dangers">
+                        <small *ngIf="loginForm.get('username').error?.required">Username is required.</small>
+                    </div>
+                    <br />
+                    <input
+                        type="password"
+                        formControlName="password"
+                        placeholder="Password"
+                        class="form-control"
+                        required
+                    />
+                    <div 
+                        *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched" 
+                        class="alert alert-dangers">
+                        <small *ngIf="loginForm.get('username').error?.required">Password is required.</small>
+                    </div>
+                    <br />
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

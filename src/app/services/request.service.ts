@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class RequestService {
 
-  private _apiEndpoint: string = '';
+  private _apiEndpoint: string = 'http://172.17.0.2/api/';
 
   constructor(
     private _httpClient: HttpClient,
@@ -18,11 +18,10 @@ export class RequestService {
   ) { }
 
   ngOnInit() {
-    this._apiEndpoint = this._router.url + '/api/';
   }
 
   get(url = ''): Observable<any> {
-    return this._httpClient.get(this._apiEndpoint + url, { headers: this.getHeader() });
+        return this._httpClient.get(this._apiEndpoint + url, { headers: this.getHeader() });
   }
 
   post(url = '',  data = {}): Observable<any> {

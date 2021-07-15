@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Validator;
@@ -47,7 +48,7 @@ class AuthController extends BaseController
 
         if (Hash::check($this->request->input('password'), $user->password)) {
             return response()->json([
-                'code' => 200,
+                'status' => 'success',
                 'access_token' => $this->jwt($user),
                 'token_type' => 'bearer'
             ], 200);
