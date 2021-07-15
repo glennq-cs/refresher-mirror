@@ -22,6 +22,7 @@ $router->group(['prefix' => 'api'], function() use ($router) {
                 'uses' => 'UserController@showAllUsers'
             ]);
 
+            /* Categories */
             $router->get('categories', [
                 'uses' => 'CategoryController@showAllCategories'
             ]);
@@ -37,6 +38,24 @@ $router->group(['prefix' => 'api'], function() use ($router) {
             $router->delete('categories/{id}', [
                 'uses' => 'CategoryController@delete'
             ]);
+
+            /* Tickets */
+            $router->get('tickets', [
+                'uses' => 'TicketController@showAllTickets'
+            ]);
+            
+            $router->post('tickets', [
+                'uses' => 'TicketController@create'
+            ]);
+
+            $router->put('tickets/{id}', [
+                'uses' => 'TicketController@update'
+            ]);
+
+            $router->delete('tickets/{id}', [
+                'uses' => 'TicketController@delete'
+            ]);
+
         });
 
     // $router->get('users', [

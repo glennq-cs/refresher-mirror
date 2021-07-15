@@ -3,22 +3,22 @@
 namespace App\Http\Controllers;
 
 use Validator;
-use App\Category;
+use App\Ticket;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class TicketController extends Controller
 {
     // use Notifiable;
-    public function showAllCategories()
+    public function showAllTickets()
     {
-        $categories = Category::all();
+        $tickets = Ticket::all();
 
         $response = [
             'status' => 'success',
-            'message' => 'Categories list.',
-            'data' => $categories
+            'message' => 'Ticket list.',
+            'data' => $tickets
         ];
 
         return response()->json($response, 200);
@@ -27,17 +27,16 @@ class CategoryController extends Controller
     public function create(Request $request)
     {
         $validate = $this->validate($request, [
-            'name' => 'required|unique:categories',
-            'description' => 'required'
+            'name' => 'required'
         ]);
 
-        $category = Category::create($request->all());
+        $ticket = Ticket::create($request->all());
         
-        if ($category) {
+        if ($ticket) {
             $response = [
                 'status' => 'success',
-                'message' => 'Category has been successfully created.',
-                'data' => $category
+                'message' => 'Ticket has been successfully created.',
+                'data' => $ticket
             ];
         }
         
@@ -47,14 +46,14 @@ class CategoryController extends Controller
     public function update($id, Request $request)
     {
 
-        $category = Category::findOrFail($id);
+        $ticket = Ticket::findOrFail($id);
         
-        $categoryResponse = $category->update($request->all());
+        $ticketResponse = $ticket->update($request->all());
         
-        if ($categoryResponse) {
+        if ($ticketResponse) {
             $response = [
                 'status' => 'success',
-                'message' => "Category has been successfully updated.",
+                'message' => "Ticket has been successfully updated.",
             ];
 
             return response()->json($response, 200);
@@ -62,8 +61,8 @@ class CategoryController extends Controller
 
         $response = [
             'status' => 'failed',
-            'message' => 'Category could not be update.',
-            'data' => $categoryResponse
+            'message' => 'Ticket could not be update.',
+            'data' => $ticketResponse
         ];
 
         return response()->json($response, 404);
@@ -71,11 +70,11 @@ class CategoryController extends Controller
 
     public function delete($id)
     {
-        Category::findOrFail($id)->delete();
+        Ticket::findOrFail($id)->delete();
 
         $response = [
             'status' => 'success',
-            'message' => "Category has been deleted successfully.",
+            'message' => "Ticket has been deleted successfully.",
         ];
 
         return response($response, 200);

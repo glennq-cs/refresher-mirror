@@ -41,8 +41,7 @@ export class AuthState {
     loginAuth({ patchState, dispatch }: StateContext<AuthStateModel>, { auth }: LoginAuth): void {
         this._authService.login(auth).subscribe(
             (response: any) => {
-                console.log(response);
-                if (response.code === 'success') {
+                if (response.status === 'success') {
                     patchState({ logged: true });
                     dispatch( new SetToken(response.access_token) );
                 }
